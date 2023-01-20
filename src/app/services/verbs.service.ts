@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { VerbsRepository } from '../repositories/verbs.repository';
 import { Verb } from '../models/Verb';
 import { VerbAttribute } from '../models/VerbAttribute';
+import { Header } from '../models/Header';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,12 @@ export class VerbsService {
   private verbList: Verb[] | any;
   private verbAttribute: VerbAttribute | any;
   private abecedary: string[] = [];
+  private header: Header[] = []
 
   constructor(private verbsRepo: VerbsRepository) {
     this.verbList = this.verbsRepo.getVerbsList();
     this.abecedary = this.verbsRepo.getAbecedary();
+    this.header = this.verbsRepo.getHeader();
   }
 
   public getVerbsListService(): Verb[] {
@@ -24,8 +27,24 @@ export class VerbsService {
     return this.abecedary;
   }
 
-  public getRandomVerbService(): Verb | any {
-    return this.verbList[Math.floor(Math.random() * this.verbList.length)];
+  public getHeaderService(): Header[] {
+    return this.header;
+  }
+
+  public getRandomVerbsService(numVerbs: number): Verb[] | any {
+    let result: Verb[] = [];
+    let listRd: number[] = [];
+    let actualRd: number = -1;
+
+    for (let i = 0; i < numVerbs; i++) {
+      do {
+        actualRd = this.verbList[Math.floor(Math.random() * this.verbList.length)]
+      } while (listRd.includes(actualRd));
+      listRd.push(actualRd);
+      let verb: Verb = this.verbList[i];
+      result.push(verb);
+    }
+    return result;
   }
 
   public getRandomVerbAttributesService(verb: Verb): VerbAttribute | any{

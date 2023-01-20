@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { GlobalDialogComponent } from '../components/dialogs/global-dialog/global-dialog.component';
+import { GlobalDialogComponent } from '../dialogs/global-dialog/global-dialog.component';
 
 @Injectable()
 export class FinalDialogService {

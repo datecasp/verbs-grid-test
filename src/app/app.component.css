@@ -19,3 +19,11 @@
   font-size: 25px;
   font-family: 'Ink Free';
 }
+
+.header {
+  text-align: center;
+  text-justify: auto;
+  font-size: 25px;
+  font-family: 'Ink Free';
+  font-weight: bold;
+}
