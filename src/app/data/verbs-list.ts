@@ -1,0 +1,33 @@
+import { Verb } from '../models/Verb';
+
+export const VERBS_LIST: Verb[] = [
+  { id: 0, spanish: "caer", present: "fall", past: "fell", participle: "fallen" },
+  { id: 0, spanish: "sentir", present: "feel", past: "felt", participle: "felt" },
+  { id: 0, spanish: "alimentar", present: "feed", past: "fed", participle: "fed" },
+  { id: 0, spanish: "empezar", present: "begin", past: "began", participle: "begun" },
+  { id: 0, spanish: "conseguir", present: "get", past: "got", participle: "got/gotten" },
+  { id: 0, spanish: "comer", present: "eat", past: "ate", participle: "eaten" },
+  { id: 0, spanish: "hacer", present: "do", past: "did", participle: "done" },
+  { id: 0, spanish: "soñar", present: "dream", past: "dreamt", participle: "dreamt" },
+  { id: 0, spanish: "ser/estar", present: "is/are", past: "was/were", participle: "been" },
+  { id: 0, spanish: "romper", present: "break", past: "broke", participle: "broken" },
+  { id: 0, spanish: "traer", present: "bring", past: "brought", participle: "brought" },
+  { id: 0, spanish: "construir", present: "build", past: "built", participle: "built" },
+  { id: 0, spanish: "comprar", present: "buy", past: "bought", participle: "bought" },
+  { id: 0, spanish: "coger", present: "catch", past: "caught", participle: "caught" },
+  { id: 0, spanish: "venir", present: "come", past: "came", participle: "come" },
+  { id: 0, spanish: "cortar", present: "cut", past: "cut", participle: "cut" },
+  { id: 0, spanish: "elegir", present: "choose", past: "chose", participle: "chosen" },
+  { id: 0, spanish: "dibujar", present: "draw", past: "drew", participle: "drawn" },
+  { id: 0, spanish: "beber", present: "drink", past: "drank", participle: "drunk" },
+  { id: 0, spanish: "conducir", present: "drive", past: "drove", participle: "driven" },
+  { id: 0, spanish: "pelear", present: "fight", past: "fought", participle: "fought" },
+  { id: 0, spanish: "encontrar", present: "find", past: "found", participle: "found" },
+  { id: 0, spanish: "volar", present: "fly", past: "flew", participle: "flown" },
+  { id: 0, spanish: "olvidar", present: "forget", past: "forgot", participle: "forgotten" },
+  { id: 0, spanish: "perdonar", present: "forgive", past: "forgave", participle: "forgiven" },
+  { id: 0, spanish: "dar", present: "give", past: "gave", participle: "given" },
+  { id: 0, spanish: "ir", present: "go", past: "went", participle: "gone" },
+  { id: 0, spanish: "tener", present: "have", past: "had", participle: "had" },
+  { id: 0, spanish: "oir", present: "hear", past: "heard", participle: "heard" }
+];
