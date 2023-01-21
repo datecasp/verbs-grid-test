@@ -29,7 +29,8 @@ yarn-error.log
 .history/*
 
 # Visual Studio
-.vs/
+.vs/*
+.vs\*
 
 
 # Miscellaneous

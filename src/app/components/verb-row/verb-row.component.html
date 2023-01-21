@@ -1,17 +1,3 @@
-<!--<mat-grid-list cols="4" class="clue" *ngFor="let verb of result" rowHeight="6:1">
-    <mat-grid-tile class="tile">
-        {{verb.spanish}}
-    </mat-grid-tile>
-    <mat-grid-tile class="tile">
-        {{verb.present}}
-    </mat-grid-tile>
-    <mat-grid-tile class="tile">
-        {{verb.past}}
-    </mat-grid-tile>
-    <mat-grid-tile class="tile">
-        {{verb.participle}}
-    </mat-grid-tile>
-</mat-grid-list>-->
 <mat-grid-list cols="4" class="clue" *ngFor="let verb of result" rowHeight="6:1">
     <mat-grid-tile *ngIf="charMatcher(verb.spanish); else blankSpanish">
         <input matInput class="clue cell" placeholder={{verb.spanish}} disabled/>
