@@ -2,12 +2,10 @@
   <h1 class="title">{{title}}</h1>
   <p class="simpleText">Ready for a quick verb grid test?</p>
   <p class="simpleText">Fill the blank cells with the correct verbal tense</p>
-  <mat-grid-list cols="5">
-      <mat-grid-tile class="header" *ngFor="let header of headers" [style.background]="header.color">
+  <mat-grid-list cols="4" rowHeight="5:1">
+      <mat-grid-tile class="header tile" *ngFor="let header of headers" [style.background]="header.color">
           {{header.tense}}
       </mat-grid-tile>
-      <mat-grid-tile class="simpleText" *ngFor="let attr of attributeList">
-          {{attr.attribute}}
-      </mat-grid-tile>
   </mat-grid-list>
+     <app-verb-row [result]="result"></app-verb-row>
 </div>

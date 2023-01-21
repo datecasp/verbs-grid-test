@@ -38,10 +38,11 @@ export class VerbsService {
 
     for (let i = 0; i < numVerbs; i++) {
       do {
-        actualRd = this.verbList[Math.floor(Math.random() * this.verbList.length)]
+        actualRd = Math.floor(Math.random() * this.verbList.length);
       } while (listRd.includes(actualRd));
       listRd.push(actualRd);
-      let verb: Verb = this.verbList[i];
+      let verb: Verb = this.verbList[actualRd];
+      verb.id = i;
       result.push(verb);
     }
     return result;

@@ -1,0 +1,15 @@
+.clue {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Ink Free';
+  font-weight: bold;
+}
+
+.cell {
+    margin: 0 0 !important;
+    border:2px solid black;
+  width: 100%;
+  height:stretch;
+  aspect-ratio: 6/1;
+  background-color: white;
+}
