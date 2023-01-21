@@ -1,6 +1,6 @@
 <mat-grid-list cols="4" class="clue" *ngFor="let verb of result" rowHeight="6:1">
     <mat-grid-tile *ngIf="charMatcher(verb.spanish); else blankSpanish">
-        <input matInput class="clue cell" placeholder={{verb.spanish}} disabled/>
+        <input matInput class="clue cell disabled" placeholder={{verb.spanish}} disabled/>
     </mat-grid-tile>
     <ng-template #blankSpanish>
         <mat-grid-tile>
@@ -8,7 +8,7 @@
         </mat-grid-tile>
     </ng-template>
     <mat-grid-tile *ngIf="charMatcher(verb.present); else blankPresent">
-        <input matInput class="clue cell" placeholder={{verb.present}} disabled/>
+        <input matInput class="clue cell disabled" placeholder={{verb.present}} disabled/>
     </mat-grid-tile>
     <ng-template #blankPresent>
         <mat-grid-tile>
@@ -16,7 +16,7 @@
         </mat-grid-tile>
     </ng-template>
     <mat-grid-tile *ngIf="charMatcher(verb.past); else blankPast">
-        <input matInput class="clue cell" placeholder={{verb.past}} disabled/>
+        <input matInput class="clue cell disabled" placeholder={{verb.past}} disabled/>
     </mat-grid-tile>
     <ng-template #blankPast>
         <mat-grid-tile>
@@ -24,7 +24,7 @@
         </mat-grid-tile>
     </ng-template>
     <mat-grid-tile *ngIf="charMatcher(verb.participle); else blankParticiple">
-        <input matInput class="clue cell" placeholder={{verb.participle}} disabled/>
+        <input matInput class="clue cell disabled" placeholder={{verb.participle}} disabled/>
     </mat-grid-tile>
     <ng-template #blankParticiple>
         <mat-grid-tile>

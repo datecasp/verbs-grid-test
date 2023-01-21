@@ -6,10 +6,15 @@
 }
 
 .cell {
-    margin: 0 0 !important;
-    border:2px solid black;
+  margin: 0 0 !important;
+  border: 2px solid black;
   width: 100%;
-  height:stretch;
+  height: stretch;
   aspect-ratio: 6/1;
   background-color: white;
+}
+
+.disabled {
+  background-color: rgba(245, 245, 245, 1);
+  color: black;
 }
