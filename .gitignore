@@ -31,6 +31,7 @@ yarn-error.log
 # Visual Studio
 .vs/
 
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/

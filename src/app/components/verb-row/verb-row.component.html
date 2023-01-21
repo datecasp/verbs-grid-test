@@ -13,19 +13,36 @@
     </mat-grid-tile>
 </mat-grid-list>-->
 <mat-grid-list cols="4" class="clue" *ngFor="let verb of result" rowHeight="6:1">
-    <mat-grid-tile *ngIf="charMatcher(verb.spanish); else blank">
-        <input matInput class="clue cell" />
+    <mat-grid-tile *ngIf="charMatcher(verb.spanish); else blankSpanish">
+        <input matInput class="clue cell" placeholder={{verb.spanish}} disabled/>
     </mat-grid-tile>
-    <ng-template #blank class="clue cell">
-        {{verb.spanish}}
+    <ng-template #blankSpanish>
+        <mat-grid-tile>
+            <input matInput class="clue cell"/>
+        </mat-grid-tile>
     </ng-template>
-    <mat-grid-tile>
-        <p class="clue cell">{{verb.present}}</p>
+    <mat-grid-tile *ngIf="charMatcher(verb.present); else blankPresent">
+        <input matInput class="clue cell" placeholder={{verb.present}} disabled/>
     </mat-grid-tile>
-    <mat-grid-tile>
-        {{verb.past}}
+    <ng-template #blankPresent>
+        <mat-grid-tile>
+            <input matInput class="clue cell"/>
+        </mat-grid-tile>
+    </ng-template>
+    <mat-grid-tile *ngIf="charMatcher(verb.past); else blankPast">
+        <input matInput class="clue cell" placeholder={{verb.past}} disabled/>
     </mat-grid-tile>
-    <mat-grid-tile>
-        {{verb.participle}}
+    <ng-template #blankPast>
+        <mat-grid-tile>
+            <input matInput class="clue cell"/>
+        </mat-grid-tile>
+    </ng-template>
+    <mat-grid-tile *ngIf="charMatcher(verb.participle); else blankParticiple">
+        <input matInput class="clue cell" placeholder={{verb.participle}} disabled/>
     </mat-grid-tile>
+    <ng-template #blankParticiple>
+        <mat-grid-tile>
+            <input matInput class="clue cell"/>
+        </mat-grid-tile>
+    </ng-template>
 </mat-grid-list>
