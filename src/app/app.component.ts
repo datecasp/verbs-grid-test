@@ -3,6 +3,7 @@ import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
 import { Header } from './models/Header';
 import { Verb } from './models/Verb';
 import { VerbAttribute } from './models/VerbAttribute';
+import { VerbRenderer } from './models/VerbRenderer';
 import { VerbsService } from './services/verbs.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
   headers: Header[] = [];
   verbsList: Verb[] = [];
   attributeList: VerbAttribute[] = [];
-  result: Verb[] = [];
+  result: VerbRenderer[] = [];
 
   constructor(private verbService: VerbsService) {}
 
@@ -30,31 +31,39 @@ export class AppComponent implements OnInit {
     this.verbsList = this.verbService.getRandomVerbsService(this.numVerbs);
     for (let i = 0; i < this.numVerbs; i++) {
       this.attributeList[i] = this.verbService.getRandomVerbAttributesService(this.verbsList[i]);
-      let tempVerb: Verb = { id: -1, spanish: "", present: "", past: "", participle: "" };
+      let tempVerb: VerbRenderer = new VerbRenderer();
       tempVerb.id = this.verbsList[i].id;
       if (this.attributeList[i].id == 0) {
         tempVerb.spanish = this.verbsList[i].spanish;
+        tempVerb.spanishFlag = true;
       }
       else if (this.attributeList[i].id == 1) {
         tempVerb.present = this.verbsList[i].present;
+        tempVerb.presentFlag = true;
       }
       else if (this.attributeList[i].id == 2) {
         tempVerb.past = this.verbsList[i].past;
+        tempVerb.pastFlag = true;
       }
       else {
         tempVerb.participle = this.verbsList[i].participle;
+        tempVerb.participleFlag = true;
       }
       this.result.push(tempVerb);
     }
   }
 
-  private resetResult(result: Verb[]) {
+  private resetResult(result: VerbRenderer[]) {
     for (let verb of result) {
       verb.id = verb.id;
       verb.spanish = "";
       verb.present = "";
       verb.past = "";
       verb.participle = "";
+      verb.spanishFlag = false;
+      verb.presentFlag = false;
+      verb.pastFlag = false;
+      verb.participleFlag = false;
     }
   }
 }
