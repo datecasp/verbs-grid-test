@@ -18,3 +18,29 @@
   background-color: rgba(245, 245, 245, 1);
   color: black;
 }
+
+.btnContainer {
+  margin: 30px auto !important;
+  display: flex;
+  column-gap: 60%;
+}
+
+#btnCheck {
+  background-color: rgba(30, 225, 255, 0.6);
+  width: 20%;
+  height: 50px;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Ink Free';
+  font-weight: bold;
+}
+
+#btnRandom {
+  background-color: rgba(355, 30, 175, 0.6);
+  width: 20%;
+  height: 50px;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Ink Free';
+  font-weight: bold;
+}

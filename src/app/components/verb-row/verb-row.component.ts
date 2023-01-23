@@ -8,9 +8,11 @@ import { VerbRenderer } from '../../models/VerbRenderer';
   templateUrl: './verb-row.component.html',
   styleUrls: ['./verb-row.component.css']
 })
-export class VerbRowComponent implements OnInit{
+export class VerbRowComponent implements OnInit {
   @Input() verbsInput: VerbRenderer[] = [];
   verbsOutput: Verb[] = [];
+  @Output() changeVerbsEvent = new EventEmitter<boolean>();
+  @Output() checkAnswersEvent = new EventEmitter<VerbRenderer[]>();
 
   ngOnInit(): void {
     this.verbsOutput = this.verbsInput;
@@ -23,8 +25,11 @@ export class VerbRowComponent implements OnInit{
     return false;
   }
 
+  onChangeVerbs() {
+    this.changeVerbsEvent.emit(true);
+  }
+
   onSubmit(f: NgForm) {
-    console.log(f.value);  // { first: '', last: '' }
-    console.log(f.valid);  // false
+    this.checkAnswersEvent.emit(this.verbsInput);
   }
 }

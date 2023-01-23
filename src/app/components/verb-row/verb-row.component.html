@@ -37,4 +37,8 @@
             </mat-grid-tile>
         </ng-template>
     </mat-grid-list>
+    <div class="btnContainer">
+        <button mat-raised-button id="btnCheck" (ngSubmit)="onSubmit(f)">Check answers</button>
+        <button mat-raised-button id="btnRandom" (click)="onChangeVerbs()">Change verbs</button>
+    </div>
 </form>

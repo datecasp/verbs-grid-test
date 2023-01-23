@@ -5,6 +5,7 @@ import { Verb } from './models/Verb';
 import { VerbAttribute } from './models/VerbAttribute';
 import { VerbRenderer } from './models/VerbRenderer';
 import { VerbsService } from './services/verbs.service';
+import { Tools } from './utils/tools';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent implements OnInit {
   attributeList: VerbAttribute[] = [];
   result: VerbRenderer[] = [];
 
-  constructor(private verbService: VerbsService) {}
+  constructor(private verbService: VerbsService,
+    private tools: Tools) { }
 
   ngOnInit(): void {
     this.headers = this.verbService.getHeaderService();
@@ -54,16 +56,20 @@ export class AppComponent implements OnInit {
   }
 
   private resetResult(result: VerbRenderer[]) {
-    for (let verb of result) {
-      verb.id = verb.id;
-      verb.spanish = "";
-      verb.present = "";
-      verb.past = "";
-      verb.participle = "";
-      verb.spanishFlag = false;
-      verb.presentFlag = false;
-      verb.pastFlag = false;
-      verb.participleFlag = false;
+    for (let i = result.length; i >= 0; i--) { result.pop(); }
+  }
+
+  public changeVerbs() {
+    this.getValues();
+  }
+  // TODO: Check this method NOT WORKING
+  public checkAnswers(answer: VerbRenderer[]) {
+    let isPassed: boolean = false;
+    let answerList: Verb[] = this.tools.castVerbRendererIntoVerb(answer);
+    for (let i = 0; i < answerList.length; i++) {
+      if (this.verbsList[i] == answerList[i]) isPassed = true;
+      }
+    console.log(isPassed);
     }
   }
-}
+

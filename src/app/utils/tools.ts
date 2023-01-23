@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Verb } from '../models/Verb';
+import { VerbRenderer } from '../models/VerbRenderer';
 import { VerbsService} from '../services/verbs.service'
 
 @Injectable({
@@ -87,6 +89,25 @@ export class Tools {
       let index: number = Math.floor(Math.random() * tempArray.length);
       result[i] = tempArray[index];
       tempArray.splice(index, 1);
+    }
+    return result;
+  }
+
+  /**
+   *  Tool function to cast VerbRenderer into Verb
+   *  @param VerbRenderer[]
+   *  @return Verb[]
+   */
+  public castVerbRendererIntoVerb(verbRenderer: VerbRenderer[]): Verb[] {
+    let result: Verb[] = [];
+    for (let verb of verbRenderer) {
+      let tempVerb: Verb = new Verb();
+      tempVerb.id = verb.id;
+      tempVerb.spanish = verb.spanish;
+      tempVerb.present = verb.present;
+      tempVerb.past = verb.past;
+      tempVerb.participle = verb.participle;
+      result.push(tempVerb);
     }
     return result;
   }
