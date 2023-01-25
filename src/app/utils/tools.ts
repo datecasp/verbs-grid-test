@@ -91,38 +91,47 @@ export class Tools {
   }
 
   /**
-   *  Tool function to cast VerbRenderer[] into Verb[]
-   *  param VerbRenderer[]
-   *  return Verb[]
-   */
-  public castVerbRendererIntoVerb(verbRenderer: VerbRenderer[]): Verb[] {
-    let result: Verb[] = [];
-    for (let verb of verbRenderer) {
-      let tempVerb: Verb = new Verb();
-      tempVerb.id = verb.id;
-      tempVerb.spanish = verb.spanish;
-      tempVerb.present = verb.present;
-      tempVerb.past = verb.past;
-      tempVerb.participle = verb.participle;
-      result.push(tempVerb);
-    }
-    return result;
-  }
-
-  /**
    * Tool function to compare Verb[] arrays
    * param verbsList[] -> Verb[] with the original verb list
    * param answersList[] -> Verb[] captured from user inputs
    * return number -> number of cells failed by user.
    *                   Zero if it´s all right answers
    */
-  public verbsListsChecker(verbsList: Verb[], answersList: Verb[]): number {
+  public verbsListsChecker(verbsList: Verb[], answersList: VerbRenderer[]): number {
     let fails: number = 0;
     for (let i = 0; i < answersList.length; i++) {
-      if (verbsList[i].spanish != answersList[i].spanish) fails++;
-      if (verbsList[i].present != answersList[i].present) fails++;
-      if (verbsList[i].past != answersList[i].past) fails++;
-      if (verbsList[i].participle != answersList[i].participle) fails++;
+      if (verbsList[i].spanish != answersList[i].spanish) {
+        fails++;
+        answersList[i].spanishCorrectAnswer = false;
+      }
+      else {
+        answersList[i].spanishCorrectAnswer = true;
+
+      }
+      if (verbsList[i].present != answersList[i].present) {
+        fails++;
+        answersList[i].presentCorrectAnswer = false;
+      }
+      else {
+        answersList[i].presentCorrectAnswer = true;
+
+      }
+      if (verbsList[i].past != answersList[i].past) {
+        fails++;
+        answersList[i].pastCorrectAnswer = false;
+      }
+      else {
+        answersList[i].pastCorrectAnswer = true;
+
+      }
+      if (verbsList[i].participle != answersList[i].participle) {
+        fails++;
+        answersList[i].participleCorrectAnswer = false;
+      }
+      else {
+        answersList[i].participleCorrectAnswer = true;
+
+      }
     }
     return fails;
   }
