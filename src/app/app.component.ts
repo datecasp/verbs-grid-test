@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
   verbsList: Verb[] = [];
   attributeList: VerbAttribute[] = [];
   gridList: VerbRenderer[]= [];
-  answersList: Verb[] = [];
 
   constructor(private verbService: VerbsService,
     private finalDialogService: FinalDialogService,
@@ -65,9 +64,8 @@ export class AppComponent implements OnInit {
     this.getValues();
   }
 
-  public checkAnswers(answer: VerbRenderer[]) {
-    this.answersList = this.tools.castVerbRendererIntoVerb(answer);
-    let fails: number = this.tools.verbsListsChecker(this.verbsList, this.answersList);
+  public checkAnswers(answersList: VerbRenderer[]) {
+    let fails: number = this.tools.verbsListsChecker(this.verbsList, answersList);
     if (fails > 0) {
       this.finalDialogService.popUp(false, 'Oh shit... Wrong answers...',
         'You made ' + fails + ' mistakes... Study more!!');
