@@ -7,12 +7,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../material.module';
 import { VerbsService } from './services/verbs.service';
+import { FinalDialogService } from './services/finalDialog.service'
 import { VerbRowComponent } from './components/verb-row/verb-row.component';
+import { FinalDialogComponent } from './components/final-dialog/final-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VerbRowComponent
+    VerbRowComponent,
+    FinalDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,7 @@ import { VerbRowComponent } from './components/verb-row/verb-row.component';
     MaterialModule,
     FormsModule
   ],
-  providers: [VerbsService],
+  providers: [VerbsService, FinalDialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

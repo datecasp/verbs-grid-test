@@ -2,7 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\final-dialog",
+    "\\src\\app\\components\\verb-row",
+    "\\src\\app\\models",
+    "\\src\\app\\services"
   ],
   "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false

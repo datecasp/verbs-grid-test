@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
 import { Header } from './models/Header';
 import { Verb } from './models/Verb';
 import { VerbAttribute } from './models/VerbAttribute';
 import { VerbRenderer } from './models/VerbRenderer';
+import { FinalDialogService } from './services/finalDialog.service';
 import { VerbsService } from './services/verbs.service';
 import { Tools } from './utils/tools';
 
@@ -18,9 +18,11 @@ export class AppComponent implements OnInit {
   headers: Header[] = [];
   verbsList: Verb[] = [];
   attributeList: VerbAttribute[] = [];
-  result: VerbRenderer[] = [];
+  gridList: VerbRenderer[]= [];
+  answersList: Verb[] = [];
 
   constructor(private verbService: VerbsService,
+    private finalDialogService: FinalDialogService,
     private tools: Tools) { }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class AppComponent implements OnInit {
   }
 
   private getValues() {
-    this.resetResult(this.result);
+    this.resetResult(this.gridList);
     this.verbsList = this.verbService.getRandomVerbsService(this.numVerbs);
     for (let i = 0; i < this.numVerbs; i++) {
       this.attributeList[i] = this.verbService.getRandomVerbAttributesService(this.verbsList[i]);
@@ -51,7 +53,7 @@ export class AppComponent implements OnInit {
         tempVerb.participle = this.verbsList[i].participle;
         tempVerb.participleFlag = true;
       }
-      this.result.push(tempVerb);
+      this.gridList.push(tempVerb);
     }
   }
 
@@ -62,14 +64,18 @@ export class AppComponent implements OnInit {
   public changeVerbs() {
     this.getValues();
   }
-  // TODO: Check this method NOT WORKING
+
   public checkAnswers(answer: VerbRenderer[]) {
-    let isPassed: boolean = false;
-    let answerList: Verb[] = this.tools.castVerbRendererIntoVerb(answer);
-    for (let i = 0; i < answerList.length; i++) {
-      if (this.verbsList[i] == answerList[i]) isPassed = true;
-      }
-    console.log(isPassed);
+    this.answersList = this.tools.castVerbRendererIntoVerb(answer);
+    let fails: number = this.tools.verbsListsChecker(this.verbsList, this.answersList);
+    if (fails > 0) {
+      this.finalDialogService.popUp(false, 'Oh shit... Wrong answers...',
+        'You made ' + fails + ' mistakes... Study more!!');
+    }
+    else
+    {
+      this.finalDialogService.popUp(true, 'Yeah right!!! Perfect score!!!',
+        'You nailed it but remember to keep studying!!');
     }
   }
-
+}

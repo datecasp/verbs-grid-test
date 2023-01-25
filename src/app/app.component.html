@@ -7,7 +7,9 @@
             {{header.tense}}
         </mat-grid-tile>
     </mat-grid-list>
-    <app-verb-row [verbsInput]="result" (changeVerbsEvent)="changeVerbs()"
-                  (checkAnswersEvent)="checkAnswers($event)">
-    </app-verb-row>
+    <div class="btnGrid">
+        <app-verb-row [verbsInput]="gridList" (checkAnswersEvent)="checkAnswers($event)" (changeVerbsEvent)="changeVerbs()"
+                      >
+        </app-verb-row>
+    </div>
 </div>

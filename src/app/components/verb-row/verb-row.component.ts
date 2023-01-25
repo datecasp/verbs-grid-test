@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Verb } from '../../models/Verb';
-import { NgForm } from '@angular/forms';
 import { VerbRenderer } from '../../models/VerbRenderer';
 
 @Component({
@@ -10,26 +8,17 @@ import { VerbRenderer } from '../../models/VerbRenderer';
 })
 export class VerbRowComponent implements OnInit {
   @Input() verbsInput: VerbRenderer[] = [];
-  verbsOutput: Verb[] = [];
   @Output() changeVerbsEvent = new EventEmitter<boolean>();
   @Output() checkAnswersEvent = new EventEmitter<VerbRenderer[]>();
 
   ngOnInit(): void {
-    this.verbsOutput = this.verbsInput;
-  }
-
-  public charMatcher(char: string): boolean {
-    if (char.match(/[a-z//]/i)) {
-      return true;
-    }
-    return false;
   }
 
   onChangeVerbs() {
     this.changeVerbsEvent.emit(true);
   }
 
-  onSubmit(f: NgForm) {
+  onCheckAnswers() {
     this.checkAnswersEvent.emit(this.verbsInput);
   }
 }
